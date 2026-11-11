@@ -180,6 +180,8 @@ class Simulator(weewx.drivers.AbstractDevice):
                        'usUnits' : weewx.US }
             for obs_type in self.observations:
                 _packet[obs_type] = self.observations[obs_type].value_at(avg_time)
+            if random.randint(0, 10) != 1:
+                del _packet["outTemp"]
             yield _packet
 
     def getTime(self):
